@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ showCatalog, goToMainPage }) => {
+const Header = ({ onShowCatalog, onGoToMainPage, onShowCart }) => {
   return (
     <header>
-      <a id="title" onClick={goToMainPage}>
+      <a id="title" onClick={onGoToMainPage}>
         APIshop
       </a>
       <ul id="nav-buttons">
         <li>
-          <a href="#" onClick={showCatalog}>
+          <a href="#" onClick={onShowCatalog}>
             Дакимакуры
           </a>
         </li>
@@ -31,7 +31,7 @@ const Header = ({ showCatalog, goToMainPage }) => {
           </button>
         </li>
         <li>
-          <button>
+          <button id="profile-button">
             <img
               src="https://img.icons8.com/?size=100&id=85356&format=png&color=FFFFFF"
               alt=""
@@ -40,7 +40,7 @@ const Header = ({ showCatalog, goToMainPage }) => {
           </button>
         </li>
         <li>
-          <button>
+          <button id="cart-button" onClick={onShowCart}>
             <img
               src="https://img.icons8.com/?size=100&id=85080&format=png&color=FFFFFF"
               alt=""
@@ -56,6 +56,7 @@ const Header = ({ showCatalog, goToMainPage }) => {
 Header.propTypes = {
   showCatalog: PropTypes.func.isRequired,
   goToMainPage: PropTypes.func.isRequired,
+  onShowCart: PropTypes.func.isRequired,
 };
 
 export default Header;

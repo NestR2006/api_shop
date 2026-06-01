@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Cart = ({ addedItems }) => {
-  return null;
+  return (
+    <section>
+      <h2>huj</h2>
+    </section>
+  );
 };
 
 Cart.propTypes = {

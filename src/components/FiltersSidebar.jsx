@@ -9,21 +9,17 @@ const Filters = ({
   currentMaxPriceRange,
   foundedItemsCount,
   onFilterReset,
+  activeMaterialFilter,
 }) => {
   let startValue = 1000;
   let maxEndValue = 24000;
 
   const [currentPrice, changeMaxPrice] = useState(startValue);
-  const [activeMaterialFilter, changeMaterialFilter] = useState(null);
   const [showListOfHeroes, changeShowListOfHeroes] = useState(false);
   const [choosedHero, setChoosedHero] = useState("Любой персонаж");
 
   const changePriceFilterHandler = (event) => {
     onChangePriceRange(event.target.value);
-  };
-
-  const changeMaterialFilterHandler = (arg) => {
-    changeMaterialFilter(arg);
   };
 
   const showHeroesListHandler = () => {
@@ -87,7 +83,7 @@ const Filters = ({
                   }
                   onClick={() => onChangeMaterialFilter(material)}
                 >
-                  {size}
+                  {material}
                 </button>
               );
             })}
@@ -132,6 +128,7 @@ Filters.propTypes = {
   activeSizeFilter: PropTypes.string.isRequired,
   onChangePriceRange: PropTypes.func.isRequired,
   currentMaxPriceRange: PropTypes.number.isRequired,
+  onChangeMaterialFilter: PropTypes.func.isRequired,
   foundedItemsCount: PropTypes.number.isRequired,
   onFilterReset: PropTypes.func.isRequired,
 };

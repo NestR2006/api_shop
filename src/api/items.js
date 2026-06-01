@@ -15,7 +15,7 @@ const dakimakuras = [
     isDoubleSided: true,
     rating: 4.9,
     inStock: true,
-    material: "polister",
+    material: "Полистер",
     color: "#ca5b4c",
   },
   {
@@ -28,7 +28,7 @@ const dakimakuras = [
     isDoubleSided: true,
     rating: 4.8,
     inStock: true,
-    material: "polister",
+    material: "Полистер",
     color: "#7aace5",
   },
   {
@@ -41,7 +41,7 @@ const dakimakuras = [
     isDoubleSided: false,
     rating: 4.7,
     inStock: true,
-    material: "polister",
+    material: "Полистер",
     color: "#018b80",
   },
   {
@@ -53,7 +53,7 @@ const dakimakuras = [
     image: "https://placehold.co/300x450?text=Gojo+Husband",
     isDoubleSided: true,
     rating: 5.0,
-    material: "polister",
+    material: "Полистер",
     inStock: false,
   },
   {
@@ -66,7 +66,7 @@ const dakimakuras = [
     isDoubleSided: true,
     rating: 5.0,
     inStock: false,
-    material: "polister",
+    material: "Полистер",
     color: "#e3f11d",
   },
   {
@@ -79,7 +79,7 @@ const dakimakuras = [
     isDoubleSided: true,
     rating: 5.0,
     inStock: false,
-    material: "polister",
+    material: "Полистер",
     color: "#23e754",
   },
 ];

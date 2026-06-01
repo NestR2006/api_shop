@@ -18,7 +18,7 @@ const Item = (props) => {
       <div className="labels">
         <h4 className="anine-name">{props.item.anime}</h4>
         <h2 className="hero-name">{props.item.name}</h2>
-        <p className="rating">{props.item.rating}</p>
+        <p className="rating">{props.item.rating}★</p>
         <p className="price">{props.item.price} UAH</p>
         <button className="add-to-cart">Добавить в корзину</button>
       </div>

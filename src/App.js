@@ -15,10 +15,11 @@ import WhyUs from "./components/WhyUs";
 import Comments from "./components/Comments";
 
 import ItemList from "./components/ItemsList";
+import Cart from "./components/Cart";
 import { useState } from "react";
 
 function App() {
-  const [showDakimakuresState, changeState] = useState(0);
+  const [pageId, changeState] = useState(0);
 
   const showCatalogHandler = () => {
     changeState(1);
@@ -28,31 +29,40 @@ function App() {
     changeState(0);
   };
 
-  if (showDakimakuresState === 1) {
-    return (
-      <div className="App">
-        <Header
-          showCatalog={showCatalogHandler}
-          goToMainPage={goToMainPageHandler}
-        />
-        <ItemList />
-      </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <Header
-          showCatalog={showCatalogHandler}
-          goToMainPage={goToMainPageHandler}
-        />
-        <MainSection onGoCheckCollection={showCatalogHandler} />
-        <Features />
-        <PopularModels onShowAllModels={showCatalogHandler} />
-        <WhyUs />
-        <Comments />
-      </div>
-    );
-  }
+  const showCartHandler = () => {
+    console.log("catalog");
+    changeState(2);
+  };
+
+  const PageRender = () => {
+    switch (pageId) {
+      case 0:
+        return (
+          <>
+            <MainSection onGoCheckCollection={showCatalogHandler} />
+            <Features />
+            <PopularModels onShowAllModels={showCatalogHandler} />
+            <WhyUs />
+            <Comments />
+          </>
+        );
+      case 1:
+        return <ItemList />;
+      case 2:
+        return <Cart />;
+    }
+  };
+
+  return (
+    <div className="App">
+      <Header
+        onShowCatalog={showCatalogHandler}
+        onGoToMainPage={goToMainPageHandler}
+        onShowCart={showCartHandler}
+      />
+      {PageRender()}
+    </div>
+  );
 }
 
 export default App;

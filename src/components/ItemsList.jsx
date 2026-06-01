@@ -18,8 +18,10 @@ const defaultStates = {
 const ItemList = () => {
   let filteredAndSortedList = items;
 
-  const [{ activeSizeFilter, activePriceRangeFilter }, setActiveFilters] =
-    useState(defaultStates);
+  const [
+    { activeSizeFilter, activeMaterialFilter, activePriceRangeFilter },
+    setActiveFilters,
+  ] = useState(defaultStates);
 
   const [resetStates, InitResetStates] = useState(true);
   const [activeSort, setActiveSort] = useState(null);
@@ -35,6 +37,13 @@ const ItemList = () => {
     setActiveFilters((prev) => ({
       ...prev,
       activePriceRangeFilter: price,
+    }));
+  };
+
+  const changeMaterialFilterHandler = (material) => {
+    setActiveFilters((prev) => ({
+      ...prev,
+      activeMaterialFilter: material,
     }));
   };
 
@@ -85,6 +94,12 @@ const ItemList = () => {
     );
   }
 
+  if (activeMaterialFilter != null) {
+    filteredAndSortedList = filteredAndSortedList.filter(
+      (item) => !item.material.indexOf(activeMaterialFilter),
+    );
+  }
+
   if (activePriceRangeFilter != null) {
     filteredAndSortedList = filteredAndSortedList.filter(
       (item) => item.price <= activePriceRangeFilter,
@@ -96,10 +111,12 @@ const ItemList = () => {
       <Filters
         onChangeSizeFilter={changeSizeFilterHandler}
         activeSizeFilter={activeSizeFilter}
+        activeMaterialFilter={activeMaterialFilter}
         onChangePriceRange={changePriceRangeHandler}
         currentMaxPriceRange={activePriceRangeFilter}
         foundedItemsCount={filteredAndSortedList.length}
         onFilterReset={filterResetHandler}
+        onChangeMaterialFilter={changeMaterialFilterHandler}
       />
       <div className="items-and-sortbar">
         <SortBar
