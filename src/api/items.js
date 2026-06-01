@@ -1,0 +1,87 @@
+import AsukaImg from "../assets/asuka_dakimakura.png";
+import RemImg from "../assets/rem-dakimakura.png";
+import HatsukeMiku from "../assets/hatsune-miko.png";
+import Prihozhin from "../assets/prihozhin-zhenia.png";
+import Zoro from "../assets/zoro.png";
+
+const dakimakuras = [
+  {
+    id: 1,
+    name: "Асука Лэнгли",
+    anime: "Neon Genesis Evangelion",
+    price: 2490,
+    sizes: ["150x50", "160x50"],
+    image: AsukaImg,
+    isDoubleSided: true,
+    rating: 4.9,
+    inStock: true,
+    material: "polister",
+    color: "#ca5b4c",
+  },
+  {
+    id: 2,
+    name: "Рем",
+    anime: "Re:Zero",
+    price: 2190,
+    sizes: ["150x50"],
+    image: RemImg,
+    isDoubleSided: true,
+    rating: 4.8,
+    inStock: true,
+    material: "polister",
+    color: "#7aace5",
+  },
+  {
+    id: 3,
+    name: "Хатсуне Мику",
+    anime: "Vocaloid",
+    price: 2700,
+    sizes: ["150x50", "160x50", "180x60"],
+    image: HatsukeMiku,
+    isDoubleSided: false,
+    rating: 4.7,
+    inStock: true,
+    material: "polister",
+    color: "#018b80",
+  },
+  {
+    id: 4,
+    name: "Годжо Сатору",
+    anime: "Jujutsu Kaisen",
+    price: 2990,
+    sizes: ["180x60"],
+    image: "https://placehold.co/300x450?text=Gojo+Husband",
+    isDoubleSided: true,
+    rating: 5.0,
+    material: "polister",
+    inStock: false,
+  },
+  {
+    id: 5,
+    name: "Евгений Пригожин",
+    anime: "Поход на Москву",
+    price: 2990,
+    sizes: ["160x50", "180x60"],
+    image: Prihozhin,
+    isDoubleSided: true,
+    rating: 5.0,
+    inStock: false,
+    material: "polister",
+    color: "#e3f11d",
+  },
+  {
+    id: 6,
+    name: "Зоро",
+    anime: "Ван пис",
+    price: 2990,
+    sizes: ["160x50", "180x60"],
+    image: Zoro,
+    isDoubleSided: true,
+    rating: 5.0,
+    inStock: false,
+    material: "polister",
+    color: "#23e754",
+  },
+];
+
+export default dakimakuras;
