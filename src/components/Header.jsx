@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ onShowCatalog, onGoToMainPage, onShowCart }) => {
+import "../styles/header.css";
+
+const Header = ({
+  onShowCatalog,
+  onGoToMainPage,
+  onShowCart,
+  onShowComments,
+  cartItemsCount,
+}) => {
   return (
     <header>
       <a id="title" onClick={onGoToMainPage}>
@@ -14,7 +22,9 @@ const Header = ({ onShowCatalog, onGoToMainPage, onShowCart }) => {
           </a>
         </li>
         <li>
-          <a href="#">Отзывы</a>
+          <a href="#" onClick={onShowComments}>
+            Отзывы
+          </a>
         </li>
         <li>
           <a href="#">Поддержка</a>
@@ -47,6 +57,11 @@ const Header = ({ onShowCatalog, onGoToMainPage, onShowCart }) => {
               className="btn-icon"
             />
           </button>
+          {cartItemsCount > 0 ? (
+            <p className="counter">{cartItemsCount}</p>
+          ) : (
+            ""
+          )}
         </li>
       </ul>
     </header>
@@ -57,6 +72,7 @@ Header.propTypes = {
   showCatalog: PropTypes.func.isRequired,
   goToMainPage: PropTypes.func.isRequired,
   onShowCart: PropTypes.func.isRequired,
+  onShowComments: PropTypes.func.isRequired,
 };
 
 export default Header;

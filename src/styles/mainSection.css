@@ -1,0 +1,78 @@
+#main-section{
+  background-image: url('../assets/dakimakures/dokimakura.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 700px;
+}
+
+#sub-section{
+  width: 500px;
+  display: block;
+  padding-top: 50px;
+}
+
+#sub-section #sub-title{
+  color: green;
+  margin: 20px auto auto 30px;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#sub-section #title{
+  color: white;
+  margin: 20px auto auto 30px;
+  font-size: 80px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#sub-section #sub-text{
+  color:white;
+  font-size: 20px;
+  margin: 20px auto auto 30px;
+}
+
+#sub-section .action-button{
+  margin: 40px auto auto 30px;
+  background-color: #1A1D21;
+  color: white;
+  border:none;
+  font-family: inherit;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+#sub-section .action-button:hover{
+  background-color: #24ed7a;
+  color: black;
+}
+
+#stats{
+  display: flex;
+  justify-content: left;
+  width: 600px;
+  margin: 20px auto auto 30px;
+}
+
+.stat{
+  color: white;
+  display: block;
+  gap:0px;
+  width: 180px;
+  padding: 0 0 0 0;
+  border-left: 1px solid #1d1d1e;
+  transition: 0.1s linear;
+}
+
+.stat h4,p{
+  margin: 0 0 0 5px;
+  padding: 0 0 0 0;
+}
+
+
+.stat p{
+  color: grey;
+}

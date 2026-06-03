@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import "../styles/mainSection.css";
+
 const MainSection = ({ onGoCheckCollection }) => {
   return (
     <section id="main-section">

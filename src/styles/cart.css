@@ -21,8 +21,9 @@
     max-width: 400px;
     border-radius: 6px;
     position: relative;
-    transition: height 0.4s linear;
+    transition: height 0.2s linear;
     box-shadow: 0 2px 5px #018b80;
+    overflow: hidden;
 }
 
 #cart .cart-item:hover{
@@ -97,12 +98,14 @@
 .counter{
     color: white;
     position: absolute;
-    right: 45px;
+    right: 40px;
     left: auto;
     top: 15px;
     bottom: auto;
     width: 20px;
     font-size: 20px;
+    width: 40px;
+    text-align: center;
 }
 
 .info-form{
@@ -151,6 +154,37 @@
     font-weight: 700;
     border-radius: 10px;
     transition: 0.4s linear;
+}
+
+.summary-row{
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+    height: auto;
+}
+
+.label{
+    color: rgba(255, 255, 255, 0.473);
+    margin: auto 0 auto 20px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    display: flex;
+    gap: 20px;
+}
+
+.value{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    margin: auto 20px auto auto;
+}
+
+.tax-row{
+    display: flex;
+    margin-top: 15px;
+    min-width: 60%;
+    height: auto;
 }
 
 .info-form .make-order:hover{

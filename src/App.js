@@ -11,10 +11,36 @@ import Comments from "./components/Comments";
 
 import ItemList from "./components/ItemsList";
 import Cart from "./components/Cart";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function App() {
   const [pageId, changeState] = useState(0);
+  const [cart, setCart] = useState([]);
+  const commentsRef = useRef(null);
+
+  const decreaseCartItemCountHandler = (itemId) => {
+    setCart((prev) =>
+      prev.map((cartItem) => {
+        if (cartItem.object.id === itemId) {
+          const newCount = cartItem.count === 1 ? 1 : cartItem.count - 1;
+          return { ...cartItem, count: newCount };
+        }
+        return cartItem;
+      }),
+    );
+  };
+
+  const increaseCartItemCountHandler = (itemId) => {
+    setCart((prev) =>
+      prev.map((cartItem) => {
+        if (cartItem.object.id === itemId) {
+          const newCount = cartItem.count + 1;
+          return { ...cartItem, count: newCount };
+        }
+        return cartItem;
+      }),
+    );
+  };
 
   const showCatalogHandler = () => {
     changeState(1);
@@ -28,6 +54,20 @@ function App() {
     changeState(2);
   };
 
+  const addToCartHandler = (item) => {
+    setCart((prev) => {
+      return [...prev, { object: item, count: 1 }];
+    });
+  };
+
+  const showCommentsHandler = (object) => {
+    if (pageId != 0) return;
+    commentsRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const PageRender = () => {
     switch (pageId) {
       case 0:
@@ -37,15 +77,23 @@ function App() {
             <Features />
             <PopularModels onShowAllModels={showCatalogHandler} />
             <WhyUs />
-            <Comments />
+            <div ref={commentsRef}>
+              <Comments />
+            </div>
           </>
         );
         break;
       case 1:
-        return <ItemList items={items} />;
+        return <ItemList items={items} onAddToCartItem={addToCartHandler} />;
         break;
       case 2:
-        return <Cart addedItems={items} />;
+        return (
+          <Cart
+            addedItems={cart}
+            onDecreaseClicked={decreaseCartItemCountHandler}
+            onIncreaseClicked={increaseCartItemCountHandler}
+          />
+        );
         break;
     }
   };
@@ -56,6 +104,8 @@ function App() {
         onShowCatalog={showCatalogHandler}
         onGoToMainPage={goToMainPageHandler}
         onShowCart={showCartHandler}
+        onShowComments={showCommentsHandler}
+        cartItemsCount={cart.length}
       />
       {PageRender()}
     </div>

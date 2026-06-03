@@ -6,6 +6,7 @@ import Filters from "./FiltersSidebar";
 import SortBar from "./SortBar";
 
 import "../styles/itemsList.css";
+import PropTypes from "prop-types";
 
 const minPrice = 1000;
 const maxEndPrice = 24000;
@@ -16,7 +17,7 @@ const defaultStates = {
   activePriceRangeFilter: 24000,
 };
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, onAddToCartItem }) => {
   let filteredAndSortedList = items;
 
   const [
@@ -127,12 +128,17 @@ const ItemList = ({ items }) => {
         />
         <ul className="items-list">
           {filteredAndSortedList.map((item) => {
-            return <Item item={item}></Item>;
+            return <Item item={item} onAddToCart={onAddToCartItem} />;
           })}
         </ul>
       </div>
     </section>
   );
+};
+
+ItemList.propTypes = {
+  onAddToCartItem: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default ItemList;
