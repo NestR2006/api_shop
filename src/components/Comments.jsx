@@ -5,6 +5,8 @@ import KirushaPfp from "../assets/kirusha.jpg";
 import KontuziusPfp from "../assets/kontuzius-pfp.jpg";
 import FrezarkaPfp from "../assets/frezarka.jfif";
 
+import "../styles/comments.css";
+
 const coments = [
   {
     comentText:

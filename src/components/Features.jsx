@@ -3,6 +3,8 @@ import BreathIcon from "../assets/breath-icon.png";
 import PoseIcon from "../assets/poses-icon.png";
 import PrintIcon from "../assets/print-icon.png";
 
+import "../styles/features.css";
+
 const featuresData = [
   {
     icon: BreathIcon,

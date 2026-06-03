@@ -1,11 +1,6 @@
 import "./App.css";
-import "../src/styles/itemsList.css";
-import "../src/styles/filters.css";
-import "../src/styles/comments.css";
-import "../src/styles/whyUs.css";
-import "../src/styles/popularModels.css";
-import "../src/styles/features.css";
-import "../src/styles/sortBar.css";
+
+import items from "./api/items";
 
 import Header from "./components/Header";
 import MainSection from "./components/MainSection";
@@ -30,7 +25,6 @@ function App() {
   };
 
   const showCartHandler = () => {
-    console.log("catalog");
     changeState(2);
   };
 
@@ -46,10 +40,13 @@ function App() {
             <Comments />
           </>
         );
+        break;
       case 1:
-        return <ItemList />;
+        return <ItemList items={items} />;
+        break;
       case 2:
-        return <Cart />;
+        return <Cart addedItems={items} />;
+        break;
     }
   };
 

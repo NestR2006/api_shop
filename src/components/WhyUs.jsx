@@ -5,6 +5,8 @@ import GuaranteeIcon from "../assets/guarantee-icon.png";
 import TestsIcon from "../assets/tests-icon.png";
 import CLockIcon from "../assets/clock-icon.png";
 
+import "../styles/whyUs.css";
+
 const WhyUs = () => {
   return (
     <section id="why-us">

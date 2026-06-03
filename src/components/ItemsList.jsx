@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import items from "../api/items";
 import _ from "lodash";
 
 import Item from "./Item";
 import Filters from "./FiltersSidebar";
 import SortBar from "./SortBar";
+
+import "../styles/itemsList.css";
 
 const minPrice = 1000;
 const maxEndPrice = 24000;
@@ -15,7 +16,7 @@ const defaultStates = {
   activePriceRangeFilter: 24000,
 };
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   let filteredAndSortedList = items;
 
   const [

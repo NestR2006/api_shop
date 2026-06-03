@@ -5,6 +5,8 @@ import popularPrint1 from "../assets/popular-print1.png";
 import popularPrint2 from "../assets/popular-print2.png";
 import popularPrint3 from "../assets/popular_print3.png";
 
+import "../styles/popularModels.css";
+
 const PopularModels = ({ onShowAllModels }) => {
   return (
     <section id="popular-models">
