@@ -1,67 +1,59 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { Link } from "react-router-dom";
+
 import "../styles/header.css";
 
-const Header = ({
-  onShowCatalog,
-  onGoToMainPage,
-  onShowCart,
-  onShowComments,
-  cartItemsCount,
-}) => {
+const Header = ({ cartItemsCount }) => {
   return (
     <header>
-      <a id="title" onClick={onGoToMainPage}>
+      <Link id="title" to="/">
         APIshop
-      </a>
+      </Link>
       <ul id="nav-buttons">
         <li>
-          <a href="#" onClick={onShowCatalog}>
-            Дакимакуры
-          </a>
+          <Link to="/modelsList">Дакимакуры</Link>
         </li>
         <li>
-          <a href="#" onClick={onShowComments}>
-            Отзывы
-          </a>
+          <Link to="/#comments">Отзывы</Link>
         </li>
         <li>
-          <a href="#">Поддержка</a>
+          <Link to="/support">Поддержка</Link>
         </li>
       </ul>
       <ul id="control-buttons">
         <li>
-          <button id="search-button">
+          <Link id="search-button">
             <img
               src="https://img.icons8.com/?size=100&id=7695&format=png&color=FFFFFF"
               alt=""
               className="btn-icon"
             />
-          </button>
+          </Link>
         </li>
         <li>
-          <button id="profile-button">
+          <Link id="profile-button" to="/profile">
             <img
               src="https://img.icons8.com/?size=100&id=85356&format=png&color=FFFFFF"
               alt=""
               className="btn-icon"
             />
-          </button>
+          </Link>
         </li>
         <li>
-          <button id="cart-button" onClick={onShowCart}>
+          <Link id="cart-button" to="/cart">
             <img
               src="https://img.icons8.com/?size=100&id=85080&format=png&color=FFFFFF"
               alt=""
               className="btn-icon"
             />
-          </button>
-          {cartItemsCount > 0 ? (
-            <p className="counter">{cartItemsCount}</p>
-          ) : (
-            ""
-          )}
+            {cartItemsCount > 0 ? (
+              <p className="counter">{cartItemsCount}</p>
+            ) : (
+              ""
+            )}
+          </Link>
         </li>
       </ul>
     </header>
@@ -72,6 +64,7 @@ Header.propTypes = {
   showCatalog: PropTypes.func.isRequired,
   goToMainPage: PropTypes.func.isRequired,
   onShowCart: PropTypes.func.isRequired,
+  onSupportClicked: PropTypes.func.isRequired,
   onShowComments: PropTypes.func.isRequired,
 };
 
