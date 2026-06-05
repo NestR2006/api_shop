@@ -1,20 +1,16 @@
-#cart{
+#cart {
     width: 99.9%;
     display: flex;
 }
 
-.cart-items{
+.cart-items {
     margin: 20px auto 0 60px;
-    /* background-image: url("../assets/cart-list-background.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: static; */
     width: 600px;
     height: 700px;
     border-radius: 10px;
 }
 
-#cart .cart-item{
+#cart .cart-item {
     margin: 20px auto 0 auto;
     height: 50px;
     padding: 5px;
@@ -26,12 +22,12 @@
     overflow: hidden;
 }
 
-#cart .cart-item:hover{
+#cart .cart-item:hover {
     border: 1px solid rgb(59, 59, 59);
     height: 120px;
 }
 
-#cart .cart-item::before{
+#cart .cart-item::before {
     content: "";
     background-color: green;
     width: 230px;
@@ -39,10 +35,11 @@
     position: absolute;
     bottom: 2px;
     top: auto;
-    box-shadow: 0 2px 5px #018b80;;
+    box-shadow: 0 2px 5px #018b80;
+    ;
 }
 
-#cart .cart-item::before{
+#cart .cart-item::before {
     content: "";
     background-color: green;
     width: 0px;
@@ -55,17 +52,17 @@
     box-shadow: 0 2px 5px #018b80;
 }
 
-#cart .hero-name{
+#cart .hero-name {
     color: white;
     margin: 0;
 }
 
-#cart .anime-name{
+#cart .anime-name {
     color: white;
     margin: 0;
 }
 
-.increase{
+.increase {
     border: 1px solid grey;
     position: absolute;
     right: 10px;
@@ -80,7 +77,7 @@
     cursor: pointer;
 }
 
-.decrease{
+.decrease {
     border: 1px solid grey;
     position: absolute;
     right: 80px;
@@ -95,7 +92,7 @@
     cursor: pointer;
 }
 
-.counter{
+.counter {
     color: white;
     position: absolute;
     right: 40px;
@@ -108,7 +105,7 @@
     text-align: center;
 }
 
-.info-form{
+.info-form {
     background-image: url("../assets/order-form-background.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -118,14 +115,14 @@
     display: block;
 }
 
-.info-form .title{
+.info-form .title {
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: 25px;
 }
 
-.info-form .input-field{
+.info-form .input-field {
     width: 50%;
     height: 30px;
     padding-left: 20px;
@@ -140,7 +137,7 @@
     box-shadow: 0px 1px 4px #018b80;
 }
 
-.info-form .make-order{
+.info-form .make-order {
     display: block;
     margin: 100px auto 0 auto;
     background-color: transparent;
@@ -156,14 +153,14 @@
     transition: 0.4s linear;
 }
 
-.summary-row{
+.summary-row {
     display: flex;
     gap: 30px;
     margin-top: 50px;
     height: auto;
 }
 
-.label{
+.label {
     color: rgba(255, 255, 255, 0.473);
     margin: auto 0 auto 20px;
     font-size: 18px;
@@ -173,21 +170,85 @@
     gap: 20px;
 }
 
-.value{
+.value {
     color: white;
     font-weight: 600;
     font-size: 20px;
     margin: auto 20px auto auto;
 }
 
-.tax-row{
+.tax-row {
     display: flex;
     margin-top: 15px;
     min-width: 60%;
     height: auto;
 }
 
-.info-form .make-order:hover{
+.info-form .make-order:hover {
     background-color: rgba(127, 255, 212, 0.479);
     color: white;
+}
+
+@media(max-width: 600px) {
+    #cart {
+        max-width: 100%;
+        max-height: auto;
+        display: flex;
+    }
+
+    .cart-items {
+        margin: 20px 10px 0 10px;
+        max-width: auto;
+        height: 700px;
+        border-radius: 10px;
+    }
+
+    .info-form {
+        background-image: url("../assets/order-form-background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 250px;
+        height: 100vh;
+        margin: 0 10px 0 auto;
+        display: block;
+    }
+
+    .info-form .input-field {
+        width: 70%;
+        height: 30px;
+        padding-left: 20px;
+        border-radius: 10px;
+        margin: 20px auto 0 auto;
+        font-size: 19px;
+        font-weight: 600;
+        display: block;
+        border: none;
+        background-color: transparent;
+        color: grey;
+        box-shadow: 0px 1px 4px #018b80;
+    }
+
+    .label {
+        color: rgba(255, 255, 255, 0.473);
+        margin: auto 0 auto 20px;
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 200px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .value {
+        color: white;
+        font-weight: 600;
+        font-size: 17px;
+        margin: auto 20px auto auto;
+    }
+
+    .tax-row {
+        display: flex;
+        margin-top: 15px;
+        min-width: 60%;
+        height: auto;
+    }
 }

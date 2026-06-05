@@ -76,3 +76,48 @@
 .stat p{
   color: grey;
 }
+
+@media (max-width: 600px) { /* Добавили px */
+  #main-section {
+    height: auto;
+    padding-bottom: 40px;
+  } 
+
+  #sub-section {
+    width: 100%; /* Вместо 500px */
+    padding-top: 20px;
+  }
+
+  #sub-section #title {
+    font-size: 44px;
+    margin: 10px 15px;
+  }
+
+  #sub-section #sub-title, 
+  #sub-section #sub-text, 
+  #sub-section .action-button {
+    margin-left: 15px;
+  }
+
+  #stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 15px;
+  }
+
+  .stat {
+    width: auto;
+  }
+
+  .stat h4{
+    color: white;
+    margin-left: 10px;
+  }
+
+  .stat p{
+    color: rgba(255, 255, 255, 0.712);
+    margin-left: 10px;
+  }
+}

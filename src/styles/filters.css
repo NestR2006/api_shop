@@ -1,14 +1,14 @@
-.filters{
+.filters {
     width: 300px;
     margin: 0 0 0 50px;
 }
 
-.filters .title{
+.filters .title {
     color: white;
     margin: 0 0 0 0;
 }
 
-.filters .sub-text{
+.filters .sub-text {
     color: rgb(83, 83, 83);
     margin: 10px 0 0 0;
     font-size: 15px;
@@ -16,13 +16,13 @@
     padding-left: 10px;
 }
 
-.filters .foundedCount{
+.filters .foundedCount {
     position: absolute;
     color: white;
     margin-left: 600px;
 }
 
-.filters .sub-text::before{
+.filters .sub-text::before {
     position: absolute;
     content: "";
     background-color: green;
@@ -31,7 +31,7 @@
     left: -1px;
 }
 
-.show-filters{
+.show-filters {
     width: 90%;
     height: 40px;
     color: green;
@@ -41,21 +41,21 @@
     border-radius: 8px;
     border: none;
     font-size: 18px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 700;
     text-align: left;
     padding-left: 50px;
 }
 
-.price-filter{
+.price-filter {
     margin-top: 30px;
 }
 
-.price-filter .title{
+.price-filter .title {
     margin: 20px 0 10px 0;
 }
 
-.slider{
+.slider {
     -webkit-appearance: none;
     margin-top: 10px;
     width: 90%;
@@ -64,7 +64,7 @@
     height: 5px;
 }
 
-.slider::-webkit-slider-thumb{
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     background-color: green;
     width: 20px;
@@ -76,34 +76,34 @@
     cursor: pointer;
 }
 
-#start-value{
+#start-value {
     color: grey;
     position: absolute;
     margin-top: 8px;
 }
 
-#end-value{
+#end-value {
     color: grey;
     position: absolute;
     margin-left: 230px;
     margin-top: 8px;
 }
 
-.size-filter{
+.size-filter {
     margin-top: 55px;
 }
 
-.size-filter .title{
+.size-filter .title {
     margin: 20px 0 15px 0;
 }
 
-.sizes{
+.sizes {
     display: flex;
     gap: 5px;
     margin-top: 0px;
 }
 
-.filter-btn{
+.filter-btn {
     background-color: transparent;
     color: white;
     border: 1px solid rgba(128, 128, 128, 0.562);
@@ -114,17 +114,17 @@
     transition: 0.2s linear;
 }
 
-.active-filter{
+.active-filter {
     border: 1px solid green;
     box-shadow: 0px 0px 15px green;
 }
 
-.hero-filter{
+.hero-filter {
     width: 200px;
     margin-top: 20px;
 }
 
-.container .title{
+.container .title {
     margin: 5px 10px 10px 10px;
     color: white;
     font-size: 20px;
@@ -135,7 +135,7 @@
     cursor: pointer;
 }
 
-.container{
+.container {
     display: block;
     width: 300px;
     height: 40px;
@@ -145,11 +145,11 @@
     border-radius: 8px;
 }
 
-.openned{
+.openned {
     height: 270px;
 }
 
-.hero-button{
+.hero-button {
     width: 95%;
     height: 40px;
     margin: 0 auto 15px auto;
@@ -166,7 +166,7 @@
     transition: 0.2s linear;
 }
 
-.filterReset{
+.filterReset {
     width: 90%;
     height: 40px;
     border-radius: 6px;
@@ -175,8 +175,17 @@
     background: #000000;
     background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(26, 26, 26, 1) 100%);
     border: none;
-    color:white;
+    color: white;
     font-size: 18px;
     font-weight: 500;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media(max-width: 600px) {
+    .filters {
+        width: 300px;
+        margin: 0 0 60px 50px;
+    }
+
+    .size-filter {}
 }

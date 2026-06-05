@@ -73,3 +73,26 @@
   height: 50px;
   margin: auto 0 auto 0;
 }
+
+@media (max-width: 600px) {
+  #why-us {
+    max-width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  #why-us #title {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .qualities {
+    margin-top: 30px;
+  }
+
+  .quality {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+}

@@ -3,3 +3,15 @@ body{
 }
 
 
+@media (max-width: 600px) {
+  .App, .widget, section, header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+}
+

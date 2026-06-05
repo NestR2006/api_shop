@@ -1,13 +1,13 @@
-header{
+header {
   display: flex;
   background-color: black;
   border: 1px solid #1d1d1e;
   justify-content: center;
   height: 50px;
-  width: 100%;
+  width: 99.9%;
 }
 
-#search-button{
+#search-button {
   width: 40px;
   height: 40px;
   background-color: black;
@@ -19,40 +19,40 @@ header{
   padding: 0;
 }
 
-header ul{
+header ul {
   display: flex;
   gap: 20px;
   list-style: none;
 }
 
-header li{
+header li {
   text-underline-offset: 0;
   background-color: transparent;
 }
 
-header li a{
+header li a {
   color: white;
   text-decoration: none;
 }
 
-#title{
+#title {
   color: white;
   margin: 10px auto 0 30px;
   font-size: 20px;
   cursor: pointer;
 }
 
-#nav-buttons{
+#nav-buttons {
   margin: auto 550px auto auto;
-   background-color: transparent;
-   gap: 30px;
+  background-color: transparent;
+  gap: 30px;
 }
 
-#nav-buttons li{
+#nav-buttons li {
   position: relative;
 }
 
-#nav-buttons li::before{
+#nav-buttons li::before {
   position: absolute;
   content: "";
   background-color: green;
@@ -63,7 +63,7 @@ header li a{
   transition: 0.2s linear;
 }
 
-#nav-buttons li:hover::before{
+#nav-buttons li:hover::before {
   position: absolute;
   content: "";
   background-color: green;
@@ -73,13 +73,13 @@ header li a{
   top: 24px;
 }
 
-#control-buttons{
-  margin: auto 15px auto auto;
+#control-buttons {
+  margin: auto 15px auto 0;
   align-items: center;
   background-color: transparent;
 }
 
-#control-buttons button{
+#control-buttons button {
   background-color: black;
   color: white;
   border: none;
@@ -88,25 +88,75 @@ header li a{
   align-items: center;
   gap: 6px;
   cursor: pointer;
+  position: relative;
 }
 
-.btn-icon{
-  width:20px;
+.btn-icon {
+  width: 20px;
   height: 20px;
   color: white;
 }
 
-header .counter{
+header .counter {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  left: auto;
+  right: -5px;
+  top: -5px;
+  bottom: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: black;
+}
+
+@media(max-width: 600px) {
+  header {
+    height: 140px;
+    display: block;
+    margin: 0 0 0 0;
+    max-width: 100%;
+  }
+
+  header #title {
+    margin: 20px 0 0 0;
+    text-align: center;
+    display: block;
+  }
+
+  #nav-buttons {
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    background-color: transparent;
+    gap: 30px;
+    margin-top: 10px;
+  }
+
+  #control-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+
+  #control-buttons button .counter {
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background-color: white;
     border-radius: 50%;
-    left: auto;
-    right: 10px;
-    top: 5px;
-    bottom: auto;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: black;
+    top: -5px;
+    right: -5px;
+    bottom: auto;
+    left: auto;
+  }
+
 }

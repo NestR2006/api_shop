@@ -3,18 +3,17 @@ import "./App.css";
 import items from "./api/items";
 
 import Header from "./components/Header";
-import MainSection from "./components/MainSection";
-import Features from "./components/Features";
-import PopularModels from "./components/PopularModels";
-import WhyUs from "./components/WhyUs";
-import Comments from "./components/Comments";
+import HomePage from "./components/HomePage";
 
 import ItemList from "./components/ItemsList";
 import Cart from "./components/Cart";
+import Support from "./components/Support";
+
 import { useRef, useState } from "react";
 
+import { Route, Routes } from "react-router-dom";
+
 function App() {
-  const [pageId, changeState] = useState(0);
   const [cart, setCart] = useState([]);
   const commentsRef = useRef(null);
 
@@ -42,72 +41,47 @@ function App() {
     );
   };
 
-  const showCatalogHandler = () => {
-    changeState(1);
-  };
-
-  const goToMainPageHandler = () => {
-    changeState(0);
-  };
-
-  const showCartHandler = () => {
-    changeState(2);
-  };
-
   const addToCartHandler = (item) => {
     setCart((prev) => {
+      const isItemInCart = prev.find(
+        (cartItem) => cartItem.object.id === item.id,
+      );
+
+      if (isItemInCart) {
+        return prev.map((cartItem) =>
+          cartItem.object.id === item.id
+            ? { ...cartItem, count: cartItem.count + 1 }
+            : cartItem,
+        );
+      }
+
       return [...prev, { object: item, count: 1 }];
     });
   };
 
-  const showCommentsHandler = (object) => {
-    if (pageId != 0) return;
-    commentsRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  const PageRender = () => {
-    switch (pageId) {
-      case 0:
-        return (
-          <>
-            <MainSection onGoCheckCollection={showCatalogHandler} />
-            <Features />
-            <PopularModels onShowAllModels={showCatalogHandler} />
-            <WhyUs />
-            <div ref={commentsRef}>
-              <Comments />
-            </div>
-          </>
-        );
-        break;
-      case 1:
-        return <ItemList items={items} onAddToCartItem={addToCartHandler} />;
-        break;
-      case 2:
-        return (
-          <Cart
-            addedItems={cart}
-            onDecreaseClicked={decreaseCartItemCountHandler}
-            onIncreaseClicked={increaseCartItemCountHandler}
-          />
-        );
-        break;
-    }
-  };
-
   return (
     <div className="App">
-      <Header
-        onShowCatalog={showCatalogHandler}
-        onGoToMainPage={goToMainPageHandler}
-        onShowCart={showCartHandler}
-        onShowComments={showCommentsHandler}
-        cartItemsCount={cart.length}
-      />
-      {PageRender()}
+      <Header cartItemsCount={cart.length} />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/modelsList"
+          element={
+            <ItemList items={items} onAddToCartItem={addToCartHandler} />
+          }
+        />
+        <Route path="/support" element={<Support />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              addedItems={cart}
+              onDecreaseClicked={decreaseCartItemCountHandler}
+              onIncreaseClicked={increaseCartItemCountHandler}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }
