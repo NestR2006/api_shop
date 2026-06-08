@@ -79,16 +79,18 @@ header li a {
   background-color: transparent;
 }
 
-#control-buttons button {
+#control-buttons a {
   background-color: black;
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 6px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
   position: relative;
+  width: 30px;
+  height: 30px;
 }
 
 .btn-icon {
@@ -97,7 +99,7 @@ header li a {
   color: white;
 }
 
-header .counter {
+#cart-button .counter {
   position: absolute;
   width: 16px;
   height: 16px;
@@ -109,21 +111,23 @@ header .counter {
   bottom: auto;
   font-size: 12px;
   font-weight: 600;
+  margin: 0;
   color: black;
+  text-align: center;
 }
 
 @media(max-width: 600px) {
   header {
-    height: 140px;
-    display: block;
+    height: auto;
+    display: flex;
+    flex-direction: column;
     margin: 0 0 0 0;
     max-width: 100%;
   }
 
   header #title {
-    margin: 20px 0 0 0;
+    margin: 0;
     text-align: center;
-    display: block;
   }
 
   #nav-buttons {
@@ -142,21 +146,6 @@ header .counter {
     background-color: transparent;
     padding: 0;
     margin: 10px 0 0 0;
-  }
-
-  #control-buttons button .counter {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: white;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 600;
-    color: black;
-    top: -5px;
-    right: -5px;
-    bottom: auto;
-    left: auto;
   }
 
 }

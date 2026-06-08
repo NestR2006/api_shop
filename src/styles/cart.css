@@ -16,7 +16,7 @@
     padding: 5px;
     max-width: 400px;
     border-radius: 6px;
-    position: relative;
+    display: flex;
     transition: height 0.2s linear;
     box-shadow: 0 2px 5px #018b80;
     overflow: hidden;
@@ -62,13 +62,15 @@
     margin: 0;
 }
 
-.increase {
+.control-buttons-and-counter {
+    display: flex;
+    margin: auto auto auto auto;
+    width: auto;
+    gap: 10px;
+}
+
+.control-buttons-and-counter .control-button {
     border: 1px solid grey;
-    position: absolute;
-    right: 10px;
-    left: auto;
-    top: 15px;
-    bottom: auto;
     width: 30px;
     height: 30px;
     border-radius: 40%;
@@ -77,32 +79,12 @@
     cursor: pointer;
 }
 
-.decrease {
-    border: 1px solid grey;
-    position: absolute;
-    right: 80px;
-    left: auto;
-    top: 15px;
-    bottom: auto;
-    width: 30px;
-    height: 30px;
-    border-radius: 40%;
-    font-size: 25px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.counter {
+.control-buttons-and-counter .counter {
     color: white;
-    position: absolute;
-    right: 40px;
-    left: auto;
-    top: 15px;
-    bottom: auto;
-    width: 20px;
     font-size: 20px;
-    width: 40px;
+    width: auto;
     text-align: center;
+    margin: 0;
 }
 
 .info-form {
@@ -199,7 +181,7 @@
     .cart-items {
         margin: 20px 10px 0 10px;
         max-width: auto;
-        height: 700px;
+        max-height: auto;
         border-radius: 10px;
     }
 

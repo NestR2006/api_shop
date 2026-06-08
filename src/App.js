@@ -1,21 +1,39 @@
 import "./App.css";
 
-import items from "./api/items";
+import fetchItems from "../src/api/items";
 
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
+import UserPage from "./components/UserPage";
 
-import ItemList from "./components/ItemsList";
+import OrdersPage from "./components/OrdersPage";
+import LikedItems from "./components/LikedItems";
+import UserInformation from "./components/UserInformation";
+
+import ItemsList from "./components/ItemsList";
 import Cart from "./components/Cart";
 import Support from "./components/Support";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Route, Routes } from "react-router-dom";
+import { indexOf } from "lodash";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [items, setList] = useState([]);
+  const [likedItemsList, changeLikedItem] = useState([]);
   const commentsRef = useRef(null);
+
+  useEffect(() => {
+    fetchItems()
+      .then((items) => {
+        setList(items);
+      })
+      .catch((error) => {
+        console.log("Что-то случилось", error);
+      });
+  }, []);
 
   const decreaseCartItemCountHandler = (itemId) => {
     setCart((prev) =>
@@ -59,6 +77,17 @@ function App() {
     });
   };
 
+  const itemLikedHandler = (likedItem) => {
+    changeLikedItem((prev) => {
+      if (prev.includes(likedItem)) {
+        return prev.filter((item) => {
+          return item.id != likedItem.id;
+        });
+      }
+      return [...prev, likedItem];
+    });
+  };
+
   return (
     <div className="App">
       <Header cartItemsCount={cart.length} />
@@ -67,7 +96,11 @@ function App() {
         <Route
           path="/modelsList"
           element={
-            <ItemList items={items} onAddToCartItem={addToCartHandler} />
+            <ItemsList
+              items={items}
+              onAddToCartItem={addToCartHandler}
+              onLikeButtonClicked={itemLikedHandler}
+            />
           }
         />
         <Route path="/support" element={<Support />} />
@@ -81,6 +114,20 @@ function App() {
             />
           }
         />
+        <Route path="/user-page" element={<UserPage />}>
+          <Route path="orders" element={<OrdersPage />} />
+          <Route
+            path="liked-items"
+            element={
+              <LikedItems
+                likedItems={likedItemsList}
+                onLikeButtonClicked={itemLikedHandler}
+                onAddToCartButtonClicked={addToCartHandler}
+              />
+            }
+          />
+          <Route path="user-information" element={<UserInformation />} />
+        </Route>
       </Routes>
     </div>
   );

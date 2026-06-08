@@ -21,6 +21,7 @@ import KilluaImg from "../assets/dakimakures/killua.png";
 import AyanokojiImg from "../assets/dakimakures/ayanokoji.png";
 import ErenImg from "../assets/dakimakures/eren.png";
 import PowerImg from "../assets/dakimakures/power.png";
+import { delay } from "lodash";
 
 const dakimakuras = [
   {
@@ -285,4 +286,12 @@ const dakimakuras = [
   },
 ];
 
-export default dakimakuras;
+const fetchItems = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(dakimakuras); // resolve — это команда "всё готово, отдай данные наружу"
+    }, 2000);
+  });
+};
+
+export default fetchItems;

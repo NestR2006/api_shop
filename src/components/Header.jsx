@@ -33,7 +33,7 @@ const Header = ({ cartItemsCount }) => {
           </Link>
         </li>
         <li>
-          <Link id="profile-button" to="/profile">
+          <Link id="profile-button" to="/user-page">
             <img
               src="https://img.icons8.com/?size=100&id=85356&format=png&color=FFFFFF"
               alt=""

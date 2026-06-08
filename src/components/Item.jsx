@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 
 import likeIcon from "../assets/like-icon.png";
 
-const Item = ({ item, onAddToCart }) => {
+const Item = ({ item, onAddToCart, onLikeClicked }) => {
+  const handler = () => {
+    console.log("aaa");
+  };
+
   return (
     <li id={item.id} className="item">
-      <button
-        className="like-button"
-        style={{ backgroundImage: `url(${likeIcon})` }}
-      ></button>
+      <button className="like-button" onClick={() => onLikeClicked(item)} />
       <img
         src={item.image}
         alt=""
@@ -31,6 +32,7 @@ const Item = ({ item, onAddToCart }) => {
 Item.propTypes = {
   item: PropTypes.object.isRequired,
   onAddToCart: PropTypes.func.isRequired,
+  onLikeClicked: PropTypes.func.isRequired,
 };
 
 export default Item;

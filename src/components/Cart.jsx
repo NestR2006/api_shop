@@ -11,7 +11,6 @@ const Cart = ({ addedItems, onIncreaseClicked, onDecreaseClicked }) => {
     finalPrice += item.object.price * item.count;
   });
   const vatPrice = Number(((finalPrice * 23) / 123).toFixed(2));
-  console.log(finalPrice);
   return (
     <section id="cart">
       <div className="cart-items">

@@ -17,7 +17,7 @@ const defaultStates = {
   activePriceRangeFilter: 24000,
 };
 
-const ItemList = ({ items, onAddToCartItem }) => {
+const ItemsList = ({ items, onAddToCartItem, onLikeButtonClicked }) => {
   let filteredAndSortedList = items;
 
   const [
@@ -91,14 +91,14 @@ const ItemList = ({ items, onAddToCartItem }) => {
   }
 
   if (activeSizeFilter != null) {
-    filteredAndSortedList = filteredAndSortedList.filter(
-      (item) => !item.sizes.indexOf(activeSizeFilter),
+    filteredAndSortedList = filteredAndSortedList.filter((item) =>
+      item.sizes.includes(activeSizeFilter),
     );
   }
 
   if (activeMaterialFilter != null) {
-    filteredAndSortedList = filteredAndSortedList.filter(
-      (item) => !item.material.indexOf(activeMaterialFilter),
+    filteredAndSortedList = filteredAndSortedList.filter((item) =>
+      item.material.includes(activeMaterialFilter),
     );
   }
 
@@ -128,7 +128,13 @@ const ItemList = ({ items, onAddToCartItem }) => {
         />
         <ul className="items-list">
           {filteredAndSortedList.map((item) => {
-            return <Item item={item} onAddToCart={onAddToCartItem} />;
+            return (
+              <Item
+                item={item}
+                onAddToCart={onAddToCartItem}
+                onLikeClicked={onLikeButtonClicked}
+              />
+            );
           })}
         </ul>
       </div>
@@ -136,9 +142,10 @@ const ItemList = ({ items, onAddToCartItem }) => {
   );
 };
 
-ItemList.propTypes = {
+ItemsList.propTypes = {
   onAddToCartItem: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
+  onLikeClicked: PropTypes.func.isRequired,
 };
 
-export default ItemList;
+export default ItemsList;
