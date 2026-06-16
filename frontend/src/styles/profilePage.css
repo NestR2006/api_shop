@@ -1,0 +1,89 @@
+#user-page {
+    background-color: black;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.side-bar {
+    width: 300px;
+    height: auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-picture {
+    width: 50%;
+    height: calc(width);
+    border-radius: 50%;
+    margin: 20px auto 0 auto;
+    box-shadow: 0px 0px 15px green;
+}
+
+.user-name {
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.content-container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto 0 auto;
+}
+
+#user-page .side-bar a {
+    text-decoration: none;
+    margin: 0 auto 30px auto;
+    font-size: 19px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.356);
+    width: 70%;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+    transition: 0.2s linear;
+    overflow: hidden;
+    position: relative;
+}
+
+#user-page .side-bar a::before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 2px;
+    background-color: #0bd682;
+    bottom: 0px;
+    top: auto;
+    left: 50%;
+    right: auto;
+    transition: 0.2s linear;
+}
+
+#user-page .side-bar a:hover::before {
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    filter: drop-shadow(0px 0px 15px #0bd682);
+}
+
+.page-name {
+    margin: auto auto 10px auto;
+    color: rgba(255, 255, 255, 0.26);
+}
+
+@media (max-width: 600px) {
+    #user-page .side-bar a {
+        text-decoration: none;
+        margin: 0 auto 30px auto;
+        font-size: 19px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.356);
+        width: 100%;
+        height: 30px;
+        border-radius: 4px;
+        text-align: center;
+        transition: 0.2s linear;
+        overflow: hidden;
+        position: relative;
+    }
+}

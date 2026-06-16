@@ -1,0 +1,104 @@
+#commentsSection{
+  border: 1px solid #1d1d1e;
+  height: 400px;
+}
+
+#commentsSection .head{
+  display: flex;
+}
+
+#commentsSection .head h1{
+  color: white;
+  margin-left: 10px;
+}
+
+#commentsSection .btns{
+  margin: 20px 10px 0 auto;
+}
+
+#commentsSection .btns .navigation{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-left: 15px;
+  border: 1px solid #0d0d0f;
+  background-color: transparent;
+  color: grey;
+  cursor: pointer;
+}
+
+#commentsSection .btns .navigation:hover{
+  border: 1px solid #060607;
+  background-color: #050607;
+  color: white;
+}
+
+.comments{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+#commentsSection .comment{
+  width: 350px;
+  height: 200px;
+  background-color: #0a0a0c;
+  padding-left: 0px;
+}
+
+.comment-part{
+  display: flex;
+  gap: 15px;
+  height: 100px;
+}
+
+.quote-icon{
+  width: 50px;
+  height: 50px;
+  margin: 20px 0 0 15px;
+}
+
+.comment-text{
+  color: grey;
+  font-size: 18px;
+  margin: 20px 10px 0 10px;
+}
+
+.user-part{
+  margin: 30px 0 10px 0;
+  display: flex;
+}
+
+.user-pfp{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: auto 0 auto 10px;
+}
+
+.username{
+  color: white;
+  font-size: 16px;
+  margin: auto auto auto 20px;
+} 
+
+@media (max-width: 600px) {
+  #commentsSection {
+    height: auto;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .comments {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 0 20px 10px 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #commentsSection .comment {
+    flex-shrink: 0;
+  }
+}

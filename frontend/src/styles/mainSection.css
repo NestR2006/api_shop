@@ -1,0 +1,123 @@
+#main-section{
+  background-image: url('../assets/dakimakures/dokimakura.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 700px;
+}
+
+#sub-section{
+  width: 500px;
+  display: block;
+  padding-top: 50px;
+}
+
+#sub-section #sub-title{
+  color: green;
+  margin: 20px auto auto 30px;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#sub-section #title{
+  color: white;
+  margin: 20px auto auto 30px;
+  font-size: 80px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#sub-section #sub-text{
+  color:white;
+  font-size: 20px;
+  margin: 20px auto auto 30px;
+}
+
+#sub-section .action-button{
+  margin: 40px auto auto 30px;
+  background-color: #1A1D21;
+  color: white;
+  border:none;
+  font-family: inherit;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+#sub-section .action-button:hover{
+  background-color: #24ed7a;
+  color: black;
+}
+
+#stats{
+  display: flex;
+  justify-content: left;
+  width: 600px;
+  margin: 20px auto auto 30px;
+}
+
+.stat{
+  color: white;
+  display: block;
+  gap:0px;
+  width: 180px;
+  padding: 0 0 0 0;
+  border-left: 1px solid #1d1d1e;
+  transition: 0.1s linear;
+}
+
+.stat h4,p{
+  margin: 0 0 0 5px;
+  padding: 0 0 0 0;
+}
+
+
+.stat p{
+  color: grey;
+}
+
+@media (max-width: 600px) { /* Добавили px */
+  #main-section {
+    height: auto;
+    padding-bottom: 40px;
+  } 
+
+  #sub-section {
+    width: 100%; /* Вместо 500px */
+    padding-top: 20px;
+  }
+
+  #sub-section #title {
+    font-size: 44px;
+    margin: 10px 15px;
+  }
+
+  #sub-section #sub-title, 
+  #sub-section #sub-text, 
+  #sub-section .action-button {
+    margin-left: 15px;
+  }
+
+  #stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 15px;
+  }
+
+  .stat {
+    width: auto;
+  }
+
+  .stat h4{
+    color: white;
+    margin-left: 10px;
+  }
+
+  .stat p{
+    color: rgba(255, 255, 255, 0.712);
+    margin-left: 10px;
+  }
+}
