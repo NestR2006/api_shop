@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import "../styles/userInformation.css";
+import "../../styles/userInformation.css";
 import PropTypes from "prop-types";
 
 const UserInformation = () => {

@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 
-import Item from "./Item";
+import Item from "../elements/Item";
 
-import "../styles/likedItems.css";
+import "../../styles/likedItems.css";
 
 const LikedItems = ({
   likedItems,

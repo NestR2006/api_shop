@@ -1,11 +1,11 @@
 import React from "react";
 
-import CommunityIcon from "../assets/community-icon.png";
-import GuaranteeIcon from "../assets/guarantee-icon.png";
-import TestsIcon from "../assets/tests-icon.png";
-import CLockIcon from "../assets/clock-icon.png";
+import CommunityIcon from "../../assets/community-icon.png";
+import GuaranteeIcon from "../../assets/guarantee-icon.png";
+import TestsIcon from "../../assets/tests-icon.png";
+import CLockIcon from "../../assets/clock-icon.png";
 
-import "../styles/whyUs.css";
+import "../../styles/whyUs.css";
 
 const WhyUs = () => {
   return (

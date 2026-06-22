@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import _ from "lodash";
 
-import Item from "./Item";
-import Filters from "./FiltersSidebar";
-import SortBar from "./SortBar";
+import Item from "../elements/Item";
+import Filters from "../elements/FiltersSidebar";
+import SortBar from "../elements/SortBar";
 
-import "../styles/itemsList.css";
+import "../../styles/itemsList.css";
 import PropTypes from "prop-types";
 
 const minPrice = 1000;

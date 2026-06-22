@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import "../../styles/OrdersPage.css";
 
-import AsukaImg from "../../assets/dakimakures/asuka_dakimakura.png";
-import ZeroTwo from "../../assets/dakimakures/zero-two.png";
-import ReiImg from "../../assets/dakimakures/rei-dakimakura.png";
-
 const OrdersPage = () => {
   const [orders, setOrdersList] = useState([]);
 

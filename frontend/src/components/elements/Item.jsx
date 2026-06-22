@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import likeIcon from "../assets/like-icon.png";
+import likeIcon from "../../assets/like-icon.png";
 
 const Item = ({ item, onAddToCart, onLikeClicked, isLiked }) => {
   const handler = () => {

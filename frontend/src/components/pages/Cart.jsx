@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-import CartItem from "../CartItem";
+import CartItem from "../elements/CartItem";
 
 import "../../styles/cart.css";
 import { useNavigate } from "react-router-dom";

@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MONGO_URL: mongodb+srv://nesterovichroman5:romap066@shop.p2v8vw3.mongodb.net/shop?retryWrites=true&w=majority&appName=shop

@@ -1,11 +1,11 @@
 import React from "react";
 
-import QuoteIcon from "../assets/quote-icon.png";
-import KirushaPfp from "../assets/kirusha.jpg";
-import KontuziusPfp from "../assets/kontuzius-pfp.jpg";
-import FrezarkaPfp from "../assets/frezarka.jfif";
+import QuoteIcon from "../../assets/quote-icon.png";
+import KirushaPfp from "../../assets/kirusha.jpg";
+import KontuziusPfp from "../../assets/kontuzius-pfp.jpg";
+import FrezarkaPfp from "../../assets/frezarka.jfif";
 
-import "../styles/comments.css";
+import "../../styles/comments.css";
 
 const coments = [
   {

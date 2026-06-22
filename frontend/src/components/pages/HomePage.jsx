@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 
-import PopularModels from "../PopularModels";
-import WhyUs from "../WhyUs";
-import MainSection from "../MainSection";
-import Comments from "../Comments";
-import Features from "../Features";
+import PopularModels from "../elements/PopularModels";
+import WhyUs from "../elements/WhyUs";
+import MainSection from "../elements/MainSection";
+import Comments from "../elements/Comments";
+import Features from "../elements/Features";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const HomePage = (onShowComments) => {

@@ -5,16 +5,19 @@ import HomePage from "./components/pages/HomePage";
 import UserPage from "./components/pages/UserPage";
 
 import OrdersPage from "./components/pages/OrdersPage";
-import LikedItems from "./components/LikedItems";
-import UserInformation from "./components/UserInformation";
+import LikedItems from "./components/pages/LikedItems";
+import UserInformation from "./components/pages//UserInformation";
 
-import ItemsList from "./components/ItemsList";
+import ItemsList from "./components/pages//ItemsList";
 import Cart from "./components/pages/Cart";
 import Support from "./components/pages/Support";
 
 import Authorization from "./components/pages/Authorization";
-import RegistrationForm from "./components/RegistrationForm";
-import LoginForm from "./components/LoginForm";
+import RegistrationForm from "./components/pages//RegistrationForm";
+import LoginForm from "./components/pages/LoginForm";
+
+import AdminPanel from "./components/pages/AdminPanel";
+import ItemsDatabase from "./components/pages/ItemsDatabase";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -142,6 +145,10 @@ function App() {
         <Route path="/authorization" element={<Authorization />}>
           <Route path="registration" element={<RegistrationForm />} />
           <Route path="login" element={<LoginForm />} />
+        </Route>
+        <Route path="/admin" element={<AdminPanel />}>
+          <Route path="itemsList" element={<ItemsDatabase />} />
+          <Route path="usersList" element={null} />
         </Route>
       </Routes>
     </div>

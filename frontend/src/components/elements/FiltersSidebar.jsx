@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import "../styles/filters.css";
+import "../../styles/filters.css";
 
 const Filters = ({
   onChangeSizeFilter,
@@ -92,7 +92,7 @@ const Filters = ({
           </div>
         </div>
       </div>
-      <div className="hero-filter">
+      {/* <div className="hero-filter">
         <div className={"container" + (showListOfHeroes ? " openned" : " ")}>
           <h4 className="title" onClick={showHeroesListHandler}>
             {choosedHero} {">"}
@@ -117,7 +117,7 @@ const Filters = ({
           })}
           ;
         </div>
-      </div>
+      </div> */}
       <button className="filterReset" onClick={onFilterReset}>
         Сбросить фильтры
       </button>

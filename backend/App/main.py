@@ -12,9 +12,14 @@ from authx.exceptions import MissingTokenError, TokenExpiredError
 from bson import ObjectId
 from datetime import datetime
 import random
+import uvicorn
 
 app = FastAPI()
-client = AsyncIOMotorClient("mongodb://127.0.0.1:27017")
+
+# MONGO_URL = os.getenv("MONGO_URL")
+MONGO_URL = MONGO_URL="mongodb+srv://nesterovichroman5:romap066@shop.p2v8vw3.mongodb.net/shop?retryWrites=true&w=majority&appName=shop"
+
+client = AsyncIOMotorClient(MONGO_URL)
 
 @app.exception_handler(MissingTokenError)
 async def missing_token_handler(request, exc):
@@ -92,8 +97,14 @@ async def user_registration(form: RegistrationForm):
             status_code=409,
             detail="User already exists"
         )
-  form.password = hash_password(form.password)
-  await users.insert_one(form.model_dump())
+    
+  user = form.model_dump()
+
+  user["password"] = hash_password(user["password"])
+  user["role"] = "user"
+
+  await users.insert_one(user)
+
   return {"status": "ok"}
 
 
@@ -146,7 +157,7 @@ app.mount("/static", StaticFiles(directory=str(FRONTEND_STATIC_DIR)), name="stat
 
 
 
-class OrderItem(BaseModel):
+class Item(BaseModel):
   id: int
   name: str
   price: int
@@ -159,7 +170,7 @@ class OrderForm(BaseModel):
   address: str
   email: EmailStr
   totalPrice: int
-  items: List[OrderItem]
+  items: List[Item]
 
 
 def generate_order_number():
@@ -200,3 +211,50 @@ async def get_user_orders(token: RequestToken = Depends(security.access_token_re
 @app.get("/")
 def serve_index():
   return FileResponse(str(FRONTEND_BUILD_DIR / "index.html"))
+
+@app.get("/admin-verify")
+async def verify_admin(): #token: RequestToken = Depends(security.access_token_required
+    # user = await users.find_one({
+    #     "_id": ObjectId(token.sub)
+    # })
+
+    # if not user:
+    #     raise HTTPException(status_code=401, detail="You are not logged in")
+    
+    # if user.get("role") != "admin":
+    #     raise HTTPException(status_code=403, detail="Admin only")
+
+    return {"status": "ok"}
+  
+
+class DeleteItemRequest(BaseModel):
+    itemId: int
+
+@app.post("/admin/delete-item")
+async def delete_item(data: DeleteItemRequest):
+    print(data.itemId, "was deleted")
+    item = await items_collection.find_one({"id" : data.itemId})
+    print(item)
+    return {"status" : "ok"}
+
+class ChangeItemForm(BaseModel):
+  id: int
+  name: str
+  anime: str
+  price: int
+  rating: float
+
+@app.post("/admin/change-item-info")
+async def change_item_info(data: ChangeItemForm):
+  print(data.id, "was changed")
+  # item = await items_collection.find_one({"id" : data.id})
+  print(data.model_dump())
+  return {"status" : "ok"}
+
+@app.get("/{full_path:path}")
+def serve_react_app(full_path: str):
+    return FileResponse(str(FRONTEND_BUILD_DIR / "index.html"))
+
+
+if __name__ == "__main__":
+  uvicorn.run("main:app", host="0.0.0.0")

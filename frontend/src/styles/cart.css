@@ -22,10 +22,10 @@
     overflow: hidden;
 }
 
-#cart .cart-item:hover {
+/* #cart .cart-item:hover {
     border: 1px solid rgb(59, 59, 59);
     height: 120px;
-}
+} */
 
 #cart .cart-item::before {
     content: "";
