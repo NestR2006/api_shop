@@ -10,6 +10,7 @@ const Cart = ({
   addedItems,
   onIncreaseClicked,
   onDecreaseClicked,
+  onDeleteItemClicked,
   onOrderAccepted,
 }) => {
   let finalPrice = 0;
@@ -22,6 +23,7 @@ const Cart = ({
   const lastNameRef = useRef(null);
   const emailRef = useRef(null);
   const addressRef = useRef(null);
+  const phoneRef = useRef(null);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ const Cart = ({
       firstName: firstNameRef.current.value,
       lastName: lastNameRef.current.value,
       address: addressRef.current.value,
+      phone: phoneRef.current.value,
       email: emailRef.current.value,
       totalPrice: finalPrice,
       items: addedItems.map((item) => ({
@@ -83,6 +86,7 @@ const Cart = ({
               key={addedItem.object.id}
               onDecrease={onDecreaseClicked}
               onIncrease={onIncreaseClicked}
+              onDeleteClicked={onDeleteItemClicked}
               count={addedItem.count}
             />
           );
@@ -110,6 +114,13 @@ const Cart = ({
           className="input-field"
           ref={emailRef}
           defaultValue={data?.email || ""}
+        />
+        <input
+          type="text"
+          placeholder="Phone number"
+          className="input-field"
+          ref={phoneRef}
+          defaultValue={data?.phone || ""}
         />
         <input
           type="text"
@@ -145,6 +156,7 @@ Cart.propTypes = {
   addedItems: PropTypes.array.isRequired,
   onIncreaseClicked: PropTypes.func.isRequired,
   onDecreaseClicked: PropTypes.func.isRequired,
+  onDeleteItemClicked: PropTypes.func.isRequired,
   onOrderAccepted: PropTypes.func.isRequired,
 };
 

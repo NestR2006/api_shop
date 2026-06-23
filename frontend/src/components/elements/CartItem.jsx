@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const CartItem = ({ itemInfo, onDecrease, onIncrease, count }) => {
+const CartItem = ({
+  itemInfo,
+  onDecrease,
+  onIncrease,
+  count,
+  onDeleteClicked,
+}) => {
   return (
     <div className="cart-item">
       <div className="info">
@@ -22,6 +28,10 @@ const CartItem = ({ itemInfo, onDecrease, onIncrease, count }) => {
         >
           -
         </button>
+        <button
+          className="delete-button"
+          onClick={() => onDeleteClicked(itemInfo.object.id)}
+        />
       </div>
     </div>
   );
@@ -31,6 +41,7 @@ CartItem.propTypes = {
   itemInfo: PropTypes.object.isRequired,
   onDecrease: PropTypes.func.isRequired,
   onIncrease: PropTypes.func.isRequired,
+  onDeleteClicked: PropTypes.func.isRequired,
   count: PropTypes.number.isRequired,
 };
 

@@ -17,7 +17,7 @@
     max-width: 100%;
     max-height: calc(100dvh - 120px);
     margin: 0;
-    padding: 0 auto 0 auto;
+    padding: 0;
     overflow: auto;
     opacity: 0;
     gap: 20px;
@@ -34,8 +34,7 @@
     color: #ffffff;
     font-size: 28px;
     font-weight: 600;
-    margin: 0px;
-    text-transform: none;
+    margin: 0;
     letter-spacing: 0.5px;
 }
 
@@ -48,18 +47,31 @@
     bottom: 2px;
 }
 
+@media (max-width: 900px) {
+    .liked-items-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
 @media (max-width: 600px) {
     .liked-items-grid {
-        display: grid;
-        justify-items: center;
-        grid-template-columns: repeat(1, 1fr);
-        max-width: 100%;
+        grid-template-columns: 1fr;
         max-height: calc(100dvh - 50px);
         margin-top: 20px;
-        padding: 0 auto 0 auto;
-        overflow: auto;
-        opacity: 0;
-        gap: 15px;
-        animation: fade-in 0.3s linear forwards;
+        gap: 12px;
+    }
+
+    .liked-items-grid .item {
+        width: 60%;
+        height: auto;
+    }
+
+    .liked-title {
+        font-size: 22px;
+    }
+
+    .liked-count {
+        font-size: 18px;
     }
 }

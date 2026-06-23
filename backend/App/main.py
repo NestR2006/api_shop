@@ -168,6 +168,7 @@ class OrderForm(BaseModel):
   firstName: str
   lastName: str
   address: str
+  phone: str
   email: EmailStr
   totalPrice: int
   items: List[Item]
@@ -251,10 +252,18 @@ async def change_item_info(data: ChangeItemForm):
   print(data.model_dump())
   return {"status" : "ok"}
 
+@app.get("/admin/users")
+async def get_all_users():
+  users_list = await users.find({}, {"password": 0}).to_list(length=100)
+
+  for user in users_list:
+    user["_id"] = str(user["_id"])
+
+  return {
+    "status": "ok",
+    "users": users_list
+  }
+
 @app.get("/{full_path:path}")
 def serve_react_app(full_path: str):
     return FileResponse(str(FRONTEND_BUILD_DIR / "index.html"))
-
-
-if __name__ == "__main__":
-  uvicorn.run("main:app", host="0.0.0.0")

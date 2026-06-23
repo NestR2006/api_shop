@@ -18,6 +18,7 @@ import LoginForm from "./components/pages/LoginForm";
 
 import AdminPanel from "./components/pages/AdminPanel";
 import ItemsDatabase from "./components/pages/ItemsDatabase";
+import UsersDatabase from "./components/pages/UsersDatabase";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -85,6 +86,12 @@ function App() {
     });
   };
 
+  const deleteItemFromCartHandler = (itemId) => {
+    setCart((prev) => {
+      return prev.filter((item) => item.object.id !== itemId);
+    });
+  };
+
   const itemLikedHandler = (likedItem) => {
     changeLikedItem((prev) => {
       if (prev.includes(likedItem)) {
@@ -124,6 +131,7 @@ function App() {
               addedItems={cart}
               onDecreaseClicked={decreaseCartItemCountHandler}
               onIncreaseClicked={increaseCartItemCountHandler}
+              onDeleteItemClicked={deleteItemFromCartHandler}
               onOrderAccepted={orederIsAcceptedHandler}
             />
           }
@@ -148,7 +156,7 @@ function App() {
         </Route>
         <Route path="/admin" element={<AdminPanel />}>
           <Route path="itemsList" element={<ItemsDatabase />} />
-          <Route path="usersList" element={null} />
+          <Route path="usersList" element={<UsersDatabase />} />
         </Route>
       </Routes>
     </div>

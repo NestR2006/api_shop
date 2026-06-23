@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import AdminItem from "../elements/AdminItem";
 import { method } from "lodash";
 
+import "../../styles/itemsDatabase.css";
+
 import AdminChangeItemInfoForm from "../elements/AdminChangeItemInfoForm";
 
 const ItemsDatabase = () => {
