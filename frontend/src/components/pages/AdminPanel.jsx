@@ -31,6 +31,7 @@ const AdminPanel = () => {
         <div className="links">
           <Link to="/admin/itemsList">Товары</Link>
           <Link to="/admin/usersList">Пользователи</Link>
+          <Link to="/admin/ordersList">Заказы</Link>
         </div>
       </div>
 

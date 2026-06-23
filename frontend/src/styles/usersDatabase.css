@@ -1,4 +1,4 @@
-.users-table {
+.database-table {
     width: 100%;
     max-width: 1000px;
     margin: 30px auto;
@@ -13,11 +13,11 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-.users-table thead {
+.database-table thead {
     background: rgba(255, 255, 255, 0.06);
 }
 
-.users-table th {
+.database-table th {
     padding: 18px 22px;
 
     color: #9ca3af;
@@ -28,7 +28,7 @@
     text-align: left;
 }
 
-.users-table td {
+.database-table td {
     padding: 18px 22px;
 
     font-size: 15px;
@@ -37,18 +37,18 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.users-table tbody tr {
+.database-table tbody tr {
     transition: background 0.2s ease;
 }
 
-.users-table tbody tr:hover {
+.database-table tbody tr:hover {
     background: rgba(255, 255, 255, 0.045);
 }
 
-.users-table td:nth-child(3) {
+.database-table td:nth-child(3) {
     color: #60a5fa;
 }
 
-.users-table td:nth-child(4) {
+.database-table td:nth-child(4) {
     color: #22c55e;
 }

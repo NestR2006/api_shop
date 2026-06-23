@@ -16,7 +16,7 @@ const UsersDatabase = () => {
     asyncFetch();
   }, []);
   return (
-    <table className="users-table">
+    <table className="database-table">
       <thead>
         <tr>
           <th>First name</th>

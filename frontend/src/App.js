@@ -19,6 +19,7 @@ import LoginForm from "./components/pages/LoginForm";
 import AdminPanel from "./components/pages/AdminPanel";
 import ItemsDatabase from "./components/pages/ItemsDatabase";
 import UsersDatabase from "./components/pages/UsersDatabase";
+import OrdersDatabase from "./components/pages/OrdersDatabase";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -157,6 +158,7 @@ function App() {
         <Route path="/admin" element={<AdminPanel />}>
           <Route path="itemsList" element={<ItemsDatabase />} />
           <Route path="usersList" element={<UsersDatabase />} />
+          <Route path="ordersList" element={<OrdersDatabase />} />
         </Route>
       </Routes>
     </div>

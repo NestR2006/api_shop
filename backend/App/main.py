@@ -264,6 +264,15 @@ async def get_all_users():
     "users": users_list
   }
 
+@app.get("/admin/orders")
+async def get_all_orders():
+  orders_list = await orders.find({}, {"_id" : 0}).to_list(length=100)
+  
+  # for order in orders_list:
+  #   order["_id"] = str(order["_id"])
+    
+  return {"status" : "ok", "orders" : orders_list}
+
 @app.get("/{full_path:path}")
 def serve_react_app(full_path: str):
     return FileResponse(str(FRONTEND_BUILD_DIR / "index.html"))
