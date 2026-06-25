@@ -1,3 +1,13 @@
+.items-database {
+    position: relative;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.items-database::-webkit-scrollbar {
+    display: none;
+}
+
 .AdminItem {
     width: 80%;
     min-height: 130px;
@@ -126,4 +136,166 @@
 
 .AdminItem .delete-item-button:active {
     transform: scale(0.95);
+}
+
+.add-item {
+    position: absolute;
+    right: 50px;
+    left: auto;
+    bottom: 50px;
+    top: auto;
+    width: 40px;
+    height: 40px;
+    color: #707070;
+    font-size: 25px;
+    font-weight: 700;
+    border: none;
+    background-color: #1f1f1f7e;
+    border-radius: 10px;
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.add-item:hover {
+    color: #f0eded;
+}
+
+#add-item-form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: auto;
+    display: flex;
+    gap: 12px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+}
+
+#add-item-form .close-button {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 5px 5px 0 auto;
+    transition: 0.2s linear;
+}
+
+#add-item-form .close-button::before {
+    content: "✕";
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(255, 0, 0, 0.61);
+}
+
+.image-and-color-inputs {
+    display: flex;
+}
+
+.info-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 0 auto;
+}
+
+#add-item-form input[type="file"] {
+    width: 100%;
+    height: 380px;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #9ca3af;
+    font-size: 14px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+}
+
+#add-item-form input[type="color"] {
+    width: 35px;
+    height: 100px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #9ca3af;
+    font-size: 14px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: auto 0 auto 5px;
+    color: transparent;
+}
+
+#add-item-form input[type="file"]::-webkit-file-upload-button {
+    display: none;
+}
+
+#add-item-form input[type="file"]::placeholder {
+    text-align: center;
+    padding-top: 49%;
+}
+
+#add-item-form input[type="text"],
+#add-item-form input[type="number"] {
+    width: 100%;
+    height: 46px;
+    padding: 0 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#add-item-form input[type="text"]::placeholder,
+#add-item-form input[type="number"]::placeholder {
+    color: #6b7280;
+    font-weight: 400;
+}
+
+#add-item-form input[type="text"]:focus,
+#add-item-form input[type="number"]:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+#add-item-form input[type="number"]:not(:placeholder-shown):invalid {
+    box-shadow: 0 0 0 3px rgba(255, 43, 43, 0.233);
+}
+
+#add-item-form button[type="submit"] {
+    width: 100%;
+    height: 48px;
+    margin-top: 4px;
+    background: #ffffff;
+    color: #0a0a0a;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#add-item-form button[type="submit"]:hover {
+    background: #e5e5e5;
+}
+
+#add-item-form button[type="submit"]:active {
+    transform: scale(0.98);
 }

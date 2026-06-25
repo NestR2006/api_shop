@@ -7,10 +7,14 @@
 .content-container {
     flex: 1;
     height: calc(100dvh - 50px);
-    overflow: hidden;
+    scrollbar-width: none;
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+.content-container::-webkit-scrollbar {
+    display: none;
 }
 
 h1 {

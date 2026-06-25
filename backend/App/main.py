@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Depends, Request, Response
+from fastapi import FastAPI, HTTPException, Depends, Request, Response, UploadFile, Form, File
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, HttpUrl
 from typing import List
 from motor.motor_asyncio import AsyncIOMotorClient
 import hashlib
@@ -33,7 +33,7 @@ class OrderForm(BaseModel):
 class changeOrderStatusForm(BaseModel):
   orderID: str
   status: str
-
+  
 app = FastAPI()
 
 # MONGO_URL = os.getenv("MONGO_URL")
@@ -220,6 +220,22 @@ async def get_all_orders():
 @app.post("/api/admin/change-order-status")
 async def change_order_status(orderToUpdate: changeOrderStatusForm):
   await orders.find_one_and_update({"number" : orderToUpdate.orderID}, {"$set" : {"status" : orderToUpdate.status}})
+
+@app.post("/api/admin/add-item")
+async def add_new_item(
+  name: str = Form(...), 
+  anime: str = Form(...),
+  price: int = Form(...),
+  rating: float = Form(...),
+  image: UploadFile = File(...),
+  color: str = Form(...)
+):
+  if image.content_type != "image/png":
+        raise HTTPException(status_code=400, detail="Only PNG images allowed")
+  print(name, anime, price, rating, color)
+  print(image.filename, image.content_type)
+  return {"status" : "ok"}
+
 
 @app.get("/")
 def serve_index():

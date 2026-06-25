@@ -5,10 +5,12 @@ import { method } from "lodash";
 import "../../styles/itemsDatabase.css";
 
 import AdminChangeItemInfoForm from "../elements/AdminChangeItemInfoForm";
+import AdminAddItemForm from "../elements/AdminAddItemForm";
 
 const ItemsDatabase = () => {
   const [items, setItems] = useState([]);
   const [itemToChange, setCurrentItemToChange] = useState();
+  const [showAddItemForm, setState] = useState(false);
 
   const deleteItemHandler = async (item) => {
     const response = await fetch("/api/admin/delete-item", {
@@ -28,6 +30,14 @@ const ItemsDatabase = () => {
     setCurrentItemToChange(null);
   };
 
+  const closeAddItemFormHandler = () => {
+    setState(false);
+  };
+
+  const shoeAddItemFormHandler = () => {
+    setState(true);
+  };
+
   useEffect(() => {
     const asyncFetch = async () => {
       const response = await fetch("/api/items");
@@ -40,25 +50,33 @@ const ItemsDatabase = () => {
   }, []);
 
   return (
-    <div className="items-database">
-      <h1>База товаров:</h1>
-      <ul className="admin-items">
-        {items?.map((item) => (
-          <AdminItem
-            key={item.id}
-            item={item}
-            onDeleteClicked={deleteItemHandler}
-            onChangeInfoClicked={changeItemInfoHandler}
+    <>
+      <div className="items-database">
+        <h1>База товаров:</h1>
+        <ul className="admin-items">
+          {items?.map((item) => (
+            <AdminItem
+              key={item.id}
+              item={item}
+              onDeleteClicked={deleteItemHandler}
+              onChangeInfoClicked={changeItemInfoHandler}
+            />
+          ))}
+        </ul>
+        {itemToChange ? (
+          <AdminChangeItemInfoForm
+            item={itemToChange}
+            onItemChangedInfo={itemSavedNewInfoHanlder}
           />
-        ))}
-      </ul>
-      {itemToChange ? (
-        <AdminChangeItemInfoForm
-          item={itemToChange}
-          onItemChangedInfo={itemSavedNewInfoHanlder}
-        />
-      ) : null}
-    </div>
+        ) : null}
+      </div>
+      {showAddItemForm && (
+        <AdminAddItemForm onCloseClicked={closeAddItemFormHandler} />
+      )}
+      <button className="add-item" onClick={shoeAddItemFormHandler}>
+        +
+      </button>
+    </>
   );
 };
 
