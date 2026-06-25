@@ -13,7 +13,6 @@ const OrdersPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.orders);
         setOrdersList(data.orders);
       }
     };
@@ -44,8 +43,10 @@ const OrdersPage = () => {
 
               <span className={`order-status ${order?.status}`}>
                 {order.status === "delivered" && "Доставлен"}
-                {order.status === "in-transit" && "В пути"}
+                {order.status === "shipping" && "В пути"}
                 {order.status === "pending" && "Ожидается"}
+                {order.status === "cancelled" && "Отменен"}
+                {order.status === "processing" && "В обработке"}
               </span>
             </div>
 

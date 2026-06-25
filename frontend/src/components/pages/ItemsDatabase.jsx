@@ -11,7 +11,7 @@ const ItemsDatabase = () => {
   const [itemToChange, setCurrentItemToChange] = useState();
 
   const deleteItemHandler = async (item) => {
-    const response = await fetch("/admin/delete-item", {
+    const response = await fetch("/api/admin/delete-item", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

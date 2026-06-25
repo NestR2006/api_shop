@@ -7,7 +7,7 @@ const UsersDatabase = () => {
 
   useEffect(() => {
     const asyncFetch = async () => {
-      const response = await fetch("/admin/users");
+      const response = await fetch("/api/admin/users");
       if (response.ok) {
         const data = await response.json();
         setUsers(data.users);
