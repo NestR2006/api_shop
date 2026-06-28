@@ -171,7 +171,7 @@ async def get_user_orders(token: RequestToken = Depends(security.access_token_re
     return {"status": "ok", "orders": orders_list}
 
 
-@app.get("/api/admin-verify")
+@app.get("/api/admin/verify")
 async def verify_admin():
     return {"status": "ok"}
 
@@ -183,7 +183,7 @@ class DeleteItemRequest(BaseModel):
 @app.post("/api/admin/delete-item")
 async def delete_item(data: DeleteItemRequest):
     print(data.itemId, "was deleted")
-    item = await items_collection.find_one({"id": data.itemId})
+    item = await items_collection.delete_one({"id": data.itemId})
     print(item)
     return {"status": "ok"}
 
@@ -198,8 +198,11 @@ class ChangeItemForm(BaseModel):
 
 @app.post("/api/admin/change-item-info")
 async def change_item_info(data: ChangeItemForm):
-    print(data.id, "was changed")
-    print(data.model_dump())
+    result = await items_collection.update_one({"id" : data.id}, 
+                                      {"$set" : data.model_dump()})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Item not found")
+    
     return {"status": "ok"}
 
 
@@ -234,6 +237,26 @@ async def add_new_item(
         raise HTTPException(status_code=400, detail="Only PNG images allowed")
   print(name, anime, price, rating, color)
   print(image.filename, image.content_type)
+
+  last_item = await items_collection.find_one({},sort=[("id", -1)])
+
+  last_id = last_item["id"] if last_item else 0
+  
+  with open(IMGS_DIR / image.filename, "wb") as buf:
+      buf.write(await image.read())
+  
+  items_collection.insert_one({"id": last_id + 1, 
+                               "name": name, 
+                               "anime" : anime, 
+                               "price" : price, 
+                               "sizes" : [], 
+                               "image" : "/images/" + image.filename,
+                               "isDoubleSized" : True,
+                               "rating" : rating,
+                               "inStock" : True,
+                               "material" : "Cheremsha",
+                               "color" : color})
+  
   return {"status" : "ok"}
 
 

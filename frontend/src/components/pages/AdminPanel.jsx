@@ -8,7 +8,7 @@ const AdminPanel = () => {
 
   useEffect(() => {
     const asyncFetch = async () => {
-      const response = await fetch("/api/admin-verify", {
+      const response = await fetch("/api/admin/verify", {
         method: "GET",
         credentials: "include",
       });

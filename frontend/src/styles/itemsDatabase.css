@@ -299,3 +299,77 @@
 #add-item-form button[type="submit"]:active {
     transform: scale(0.98);
 }
+
+#admin-change-item-info {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 380px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+    box-sizing: border-box;
+}
+
+#admin-change-item-info input {
+    width: 100%;
+    height: 46px;
+    padding: 0 16px;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#admin-change-item-info input::placeholder {
+    color: #6b7280;
+    font-weight: 400;
+}
+
+#admin-change-item-info input:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+#admin-change-item-info button[type="submit"] {
+    width: 100%;
+    height: 48px;
+    margin-top: 4px;
+
+    background: #ffffff;
+    color: #0a0a0a;
+    font-size: 15px;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#admin-change-item-info button[type="submit"]:hover {
+    background: #e5e5e5;
+}
+
+#admin-change-item-info button[type="submit"]:active {
+    transform: scale(0.98);
+}

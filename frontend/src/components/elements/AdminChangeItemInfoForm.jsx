@@ -32,7 +32,7 @@ const AdminChangeItemInfoForm = ({ item, onItemChangedInfo }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     const asyncFetch = async () => {
-      const response = await fetch("/admin/change-item-info", {
+      const response = await fetch("/api/admin/change-item-info", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

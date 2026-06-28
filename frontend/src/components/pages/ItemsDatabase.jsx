@@ -63,13 +63,13 @@ const ItemsDatabase = () => {
             />
           ))}
         </ul>
-        {itemToChange ? (
-          <AdminChangeItemInfoForm
-            item={itemToChange}
-            onItemChangedInfo={itemSavedNewInfoHanlder}
-          />
-        ) : null}
       </div>
+      {itemToChange ? (
+        <AdminChangeItemInfoForm
+          item={itemToChange}
+          onItemChangedInfo={itemSavedNewInfoHanlder}
+        />
+      ) : null}
       {showAddItemForm && (
         <AdminAddItemForm onCloseClicked={closeAddItemFormHandler} />
       )}

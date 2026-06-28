@@ -29,7 +29,7 @@ const AdminAddItemForm = ({ onCloseClicked }) => {
     });
     if (!response.ok) {
       const data = await response.json();
-      console.log(data.detail);
+      onCloseClicked();
     }
   };
 
@@ -54,7 +54,7 @@ const AdminAddItemForm = ({ onCloseClicked }) => {
           style={{
             backgroundImage: choosedImage ? `url(${choosedImage})` : "none",
             filter: shadowColor
-              ? `drop-shadow(0px 0px 15px ${shadowColor})`
+              ? `drop-shadow(5px 5px 5px ${shadowColor})`
               : "none",
           }}
         />
@@ -77,6 +77,7 @@ const AdminAddItemForm = ({ onCloseClicked }) => {
           placeholder="Rating"
           max={5}
           min={0}
+          step={0.1}
           ref={ratingRef}
         />
         <input type="number" placeholder="Price" ref={priceRef} />
