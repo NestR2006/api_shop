@@ -72,11 +72,11 @@ orders = db.orders
 
 CURRENT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = CURRENT_DIR.parent.parent
-FRONTEND_BUILD_DIR = (CURRENT_DIR / ".." / ".." / "frontend" / "build").resolve()
+FRONTEND_BUILD_DIR = (CURRENT_DIR / ".." / ".." / "frontend" / "dist").resolve()
 IMGS_DIR = ROOT_DIR / "frontend" / "src" / "assets" / "dakimakures"
-FRONTEND_STATIC_DIR = FRONTEND_BUILD_DIR / "static"
+FRONTEND_STATIC_DIR = FRONTEND_BUILD_DIR / "assets"
 
-app.mount("/static", StaticFiles(directory=str(FRONTEND_STATIC_DIR)), name="static")
+app.mount("/assets", StaticFiles(directory=str(FRONTEND_BUILD_DIR / "assets")), name="static")
 app.mount("/images", StaticFiles(directory=str(IMGS_DIR)), name="dakimakura_images")
 
 def hash_password(password: str):
