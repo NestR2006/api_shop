@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import type { ItemObj } from "../../types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 
 interface AdminChangeItemInfoFormProps{
   item: ItemObj, 
   onItemChangedInfo: () => void,
 }
+
 
 const AdminChangeItemInfoForm = ({ item, onItemChangedInfo } : AdminChangeItemInfoFormProps) => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,31 @@ const AdminChangeItemInfoForm = ({ item, onItemChangedInfo } : AdminChangeItemIn
     price: "",
     rating: "",
   });
+
+  const UseQueryClient = useQueryClient();
+
+  const ChangeItemInfoMutation = useMutation({
+      mutationFn: async () => {
+        const response = await fetch("/api/admin/change-item-info", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: item.id,
+            name: formData.name,
+            anime: formData.anime,
+            price: formData.price,
+            rating: formData.rating,
+          }),
+        });
+        return await response.json();
+      },
+      onSuccess: () => {
+        UseQueryClient.invalidateQueries({queryKey: ["items"]});
+        onItemChangedInfo();
+      }
+    });
 
   useEffect(() => {
     setFormData({
@@ -35,25 +62,7 @@ const AdminChangeItemInfoForm = ({ item, onItemChangedInfo } : AdminChangeItemIn
 
   const submitHandler = (e : React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const asyncFetch = async () => {
-      const response = await fetch("/api/admin/change-item-info", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: item.id,
-          name: formData.name,
-          anime: formData.anime,
-          price: formData.price,
-          rating: formData.rating,
-        }),
-      });
-      if (response.ok) {
-        onItemChangedInfo();
-      }
-    };
-    asyncFetch();
+    ChangeItemInfoMutation.mutate()
   };
 
   return (

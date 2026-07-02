@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 
 interface AdminAddItemFormProps{
@@ -14,10 +15,11 @@ const AdminAddItemForm = ({ onCloseClicked } : AdminAddItemFormProps) => {
 
   const [choosedImage, setImageLink] = useState("");
   const [imageFile, setFile] = useState<File | undefined>(undefined);
-  const [shadowColor, setColor] = useState("");
+  const [shadowColor, setColor] = useState("#eee");
 
-  const submitHandler = async (e : React.SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const queryClient = useQueryClient();
+
+  const addNewItemMutation = useMutation({mutationFn: async () => {
     let formData = new FormData();
     formData.append("name", charNameRef.current!.value);
     formData.append("anime", animeNameRef.current!.value);
@@ -30,9 +32,22 @@ const AdminAddItemForm = ({ onCloseClicked } : AdminAddItemFormProps) => {
       method: "POST",
       body: formData,
     });
+
     if (!response.ok) {
-      onCloseClicked();
+      const errorData = await response.json();
+      throw new Error(errorData.detail?.[0]?.msg ?? "Failed to add item");
     }
+
+    return await response.json();
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({queryKey: ["items"]});
+    onCloseClicked();
+  }});
+
+  const submitHandler = async (e : React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    addNewItemMutation.mutate();
   };
 
   const setImageHandler = (image: File) => {

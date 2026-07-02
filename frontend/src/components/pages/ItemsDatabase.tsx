@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AdminItem from "../elements/AdminItem";
 
 import "../../styles/itemsDatabase.css";
@@ -7,20 +7,37 @@ import AdminChangeItemInfoForm from "../elements/AdminChangeItemInfoForm";
 import AdminAddItemForm from "../elements/AdminAddItemForm";
 
 import type { ItemObj } from "../../types";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const ItemsDatabase = () => {
-  const [items, setItems] = useState<ItemObj[]>();
-  const [itemToChange, setCurrentItemToChange] = useState<ItemObj>();
-  const [showAddItemForm, setState] = useState(false);
+  const ItemsFetch = useQuery({queryKey: ["items"], queryFn: async () : Promise<ItemObj[]> => {
+    const response = await fetch("/api/items");
+    return await response.json();
+  }})
 
-  const deleteItemHandler = async (itemId: number) => {
-    await fetch("/api/admin/delete-item", {
-      method: "POST",
+  const queryClient = useQueryClient();
+  const deleteItemMutation = useMutation({mutationFn: async(itemId: number) => {
+    const response = await fetch("/api/admin/delete-item", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ itemId: itemId }),
     });
+
+    return await response.json();
+  },
+  onSuccess:() => {
+    queryClient.invalidateQueries({queryKey: ["items"]});
+  }})
+
+  const items = ItemsFetch.data ?? [];
+
+  const [itemToChange, setCurrentItemToChange] = useState<ItemObj>();
+  const [showAddItemForm, setState] = useState(false);
+
+  const deleteItemHandler = async (itemId: number) => {
+    deleteItemMutation.mutate(itemId);
   };
 
   const changeItemInfoHandler = (item : ItemObj) => {
@@ -38,17 +55,6 @@ const ItemsDatabase = () => {
   const shoeAddItemFormHandler = () => {
     setState(true);
   };
-
-  useEffect(() => {
-    const asyncFetch = async () => {
-      const response = await fetch("/api/items");
-      if (response.ok) {
-        const data = await response.json();
-        setItems(data);
-      }
-    };
-    asyncFetch();
-  }, []);
 
   return (
     <>

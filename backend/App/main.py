@@ -36,8 +36,7 @@ class changeOrderStatusForm(BaseModel):
   
 app = FastAPI()
 
-# MONGO_URL = os.getenv("MONGO_URL")
-MONGO_URL = "mongodb+srv://nesterovichroman5:romap066@shop.p2v8vw3.mongodb.net/shop?retryWrites=true&w=majority&appName=shop"
+MONGO_URL = os.getenv("MONGO_URL")
 
 client = AsyncIOMotorClient(MONGO_URL)
 
@@ -58,7 +57,7 @@ async def expired_token_handler(request: Request, exc: TokenExpiredError):
 
 
 config = AuthXConfig()
-config.JWT_SECRET_KEY = "SECRET_KET"
+config.JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 config.JWT_ACCESS_COOKIE_NAME = "my_access_token"
 config.JWT_TOKEN_LOCATION = ["cookies"]
 security = AuthX(config=config)
@@ -180,7 +179,7 @@ class DeleteItemRequest(BaseModel):
     itemId: int
 
 
-@app.post("/api/admin/delete-item")
+@app.delete("/api/admin/delete-item")
 async def delete_item(data: DeleteItemRequest):
     print(data.itemId, "was deleted")
     item = await items_collection.delete_one({"id": data.itemId})
@@ -196,7 +195,7 @@ class ChangeItemForm(BaseModel):
     rating: float
 
 
-@app.post("/api/admin/change-item-info")
+@app.put("/api/admin/change-item-info")
 async def change_item_info(data: ChangeItemForm):
     result = await items_collection.update_one({"id" : data.id}, 
                                       {"$set" : data.model_dump()})
@@ -245,7 +244,7 @@ async def add_new_item(
   with open(IMGS_DIR / image.filename, "wb") as buf:
       buf.write(await image.read())
   
-  items_collection.insert_one({"id": last_id + 1, 
+  await items_collection.insert_one({"id": last_id + 1, 
                                "name": name, 
                                "anime" : anime, 
                                "price" : price, 
